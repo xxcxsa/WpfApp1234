@@ -1,0 +1,130 @@
+﻿<Window x:Class="WpfApp1234.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Работа с потоками"
+        Height="620" Width="850"
+        MinHeight="550" MinWidth="700"
+        WindowStartupLocation="CenterScreen"
+        Background="#F3F4F6">
+
+    <Grid Margin="20">
+        <TabControl FontSize="14">
+
+            <!-- Задание 1 -->
+            <TabItem Header="Задание 1">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="20">
+
+                        <TextBlock Text="Работа с одним потоком"
+                                   FontSize="23"
+                                   FontWeight="Bold"
+                                   Margin="0,0,0,20"/>
+
+                        <TextBlock Text="1. Запуск потока с ProgressBar"
+                                   FontWeight="SemiBold"
+                                   FontSize="16"/>
+
+                        <ProgressBar x:Name="ProgressBar1"
+                                     Height="25"
+                                     Minimum="0"
+                                     Maximum="100"
+                                     Margin="0,10"/>
+
+                        <TextBlock x:Name="ProgressText"
+                                   Text="Прогресс: 0%"
+                                   Margin="0,0,0,10"/>
+
+                        <Button x:Name="StartProgressButton"
+                                Content="Запустить поток"
+                                Width="200"
+                                Height="35"
+                                HorizontalAlignment="Left"
+                                Click="StartProgressButton_Click"/>
+
+                        <Separator Margin="0,20"/>
+
+                        <TextBlock Text="2. Изменение приоритета потока"
+                                   FontWeight="SemiBold"
+                                   FontSize="16"/>
+
+                        <Button Content="Запустить поток с высоким приоритетом"
+                                Width="280"
+                                Height="35"
+                                HorizontalAlignment="Left"
+                                Margin="0,10"
+                                Click="StartPriorityButton_Click"/>
+
+                        <TextBlock x:Name="PriorityText"
+                                   Text="Поток ещё не запущен"
+                                   TextWrapping="Wrap"/>
+
+                        <Separator Margin="0,20"/>
+
+                        <TextBlock Text="3. Обновление интерфейса без Dispatcher"
+                                   FontWeight="SemiBold"
+                                   FontSize="16"/>
+
+                        <Button Content="Попробовать обновить UI без Dispatcher"
+                                Width="300"
+                                Height="35"
+                                HorizontalAlignment="Left"
+                                Margin="0,10"
+                                Click="WithoutDispatcherButton_Click"/>
+
+                        <TextBlock x:Name="ErrorText"
+                                   Text="Здесь появится результат проверки"
+                                   TextWrapping="Wrap"
+                                   Foreground="DarkRed"/>
+
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <!-- Задание 2 -->
+            <TabItem Header="Задание 2">
+                <StackPanel Margin="20">
+
+                    <TextBlock Text="Три потока с разными приоритетами"
+                               FontSize="23"
+                               FontWeight="Bold"
+                               Margin="0,0,0,20"/>
+
+                    <TextBlock Text="Каждый поток считает от 1 до 100 с задержкой 100 мс."
+                               Margin="0,0,0,20"/>
+
+                    <GroupBox Header="Поток Lowest" Padding="12" Margin="0,5">
+                        <TextBlock x:Name="LowestText"
+                                   Text="Значение: 0"
+                                   FontSize="17"/>
+                    </GroupBox>
+
+                    <GroupBox Header="Поток Normal" Padding="12" Margin="0,5">
+                        <TextBlock x:Name="NormalText"
+                                   Text="Значение: 0"
+                                   FontSize="17"/>
+                    </GroupBox>
+
+                    <GroupBox Header="Поток Highest" Padding="12" Margin="0,5">
+                        <TextBlock x:Name="HighestText"
+                                   Text="Значение: 0"
+                                   FontSize="17"/>
+                    </GroupBox>
+
+                    <Button Content="Запустить три потока"
+                            Width="220"
+                            Height="40"
+                            HorizontalAlignment="Left"
+                            Margin="0,20,0,10"
+                            Click="StartThreeThreadsButton_Click"/>
+
+                    <TextBlock x:Name="ThreadsResultText"
+                               Text="Ожидание запуска потоков..."
+                               FontWeight="SemiBold"
+                               TextWrapping="Wrap"/>
+
+                </StackPanel>
+            </TabItem>
+
+        </TabControl>
+    </Grid>
+</Window>
